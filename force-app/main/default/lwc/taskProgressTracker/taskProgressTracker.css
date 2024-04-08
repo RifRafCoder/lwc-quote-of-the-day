@@ -1,0 +1,21 @@
+.task-completed {
+    text-decoration: line-through;
+    color: #666;
+}
+
+.task-box {
+    padding: 10px;
+}
+
+.task-progress-container {
+    padding: 20px;
+}
+
+.task-box:nth-child(odd) {
+    background-color: #f0f0f0; /* Light grey background for odd boxes */
+}
+
+.task-box:nth-child(even) {
+    background-color: #f9f9f9; /* Lighter grey background for even boxes */
+}
+

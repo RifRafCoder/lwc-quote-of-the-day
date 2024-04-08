@@ -1,0 +1,32 @@
+<template>
+    <lightning-card title="Task Progress Tracker" class="slds-p-around_medium">
+        <div class="slds-grid slds-wrap">
+            <template for:each={tasks} for:item="task">
+                <div key={task.id} class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                    <div class="slds-box slds-box_small">
+                        <div class="slds-grid slds-grid_vertical-align-center">
+                            <div class="slds-col slds-size_1-of-12">
+                                <lightning-input type="checkbox" checked={task.completed} onchange={handleTaskCompletion} data-task-id={task.id}></lightning-input>
+                            </div>
+                            <div class="slds-col slds-size_11-of-12">
+                                <template if:true={task.completed}>
+                                    <p class="task-completed" data-task-id={task.id}>{task.name}</p>
+                                </template>
+                                <template if:false={task.completed}>
+                                    <p data-task-id={task.id}>{task.name}</p>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+        <div class="slds-p-top_medium task-box">
+            <lightning-input label="New Task" value={newTask} onchange={handleTaskChange}></lightning-input>
+            <lightning-button label="Add Task" onclick={handleAddTask} variant="brand" class="slds-m-top_medium"></lightning-button>
+        </div>
+        <template if:false={tasks}>
+            <p>No tasks available.</p>
+        </template>
+    </lightning-card>
+</template>
